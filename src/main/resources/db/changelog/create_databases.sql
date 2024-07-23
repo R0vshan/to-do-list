@@ -1,6 +1,6 @@
 CREATE TYPE task_status AS ENUM ('Not Done', 'In Progress', 'Done');
 
-create table if not exists public.users
+create table if not exists public.user
 (
     id       uuid default gen_random_uuid() not null
         primary key,
@@ -11,7 +11,7 @@ create table if not exists public.users
         unique
 );
 
-alter table public.users
+alter table public.user
     owner to postgres;
 
 create table if not exists public.tasks
@@ -28,7 +28,7 @@ create table if not exists public.tasks
     end_date    date,
     user_id     uuid         not null
     constraint fk_user
-    references public.users
+    references public.user
     );
 
 alter table public.tasks
