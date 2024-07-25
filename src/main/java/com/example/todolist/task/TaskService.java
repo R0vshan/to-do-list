@@ -33,7 +33,7 @@ public class TaskService {
             task.setStatus(taskDetails.getStatus());
             task.setStartDate(taskDetails.getStartDate());
             task.setEndDate(taskDetails.getEndDate());
-//            task.setUserId(taskDetails.getUserId());
+            task.setUserId(taskDetails.getUserId());
             return taskRepository.save(task);
         }
         return null;

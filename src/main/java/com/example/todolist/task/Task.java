@@ -23,6 +23,13 @@ public class Task {
 
     private UUID userId;
 
+    public UUID getUserId() {
+        return userId;
+    }
+
+    public void setUserId(UUID userId) {
+        this.userId = userId;
+    }
 
     public String getTitle() {
         return title;
@@ -47,17 +54,22 @@ public class Task {
     public void setStatus(String status) {
         this.status = status;
     }
+
     public Date getStartDate() {
         return startDate;
     }
+
     public void setStartDate(Date startDate) {
         this.startDate = startDate;
     }
+
     public Date getEndDate() {
         return endDate;
     }
+
     public void setEndDate(Date endDate) {
         this.endDate = endDate;
     }
+
 }
 
