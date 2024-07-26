@@ -14,6 +14,11 @@ public class TaskController {
     @Autowired
     private TaskService taskService;
 
+    @GetMapping
+    public List<Task> getAllTasks() {
+        return taskService.getAllTasks();
+    }
+
     @GetMapping("/{id}")
     public Task getTaskById(@PathVariable Integer id) {
         return taskService.getTaskById(id);

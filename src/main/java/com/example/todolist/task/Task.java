@@ -11,16 +11,13 @@ public class Task {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
 
+    private Integer id;
     private String title;
     private String description;
     private String status;
-
     private Date startDate;
-
     private Date endDate;
-
     private UUID userId;
 
     public UUID getUserId() {

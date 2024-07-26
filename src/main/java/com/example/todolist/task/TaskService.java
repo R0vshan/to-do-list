@@ -13,6 +13,10 @@ public class TaskService {
     @Autowired
     private TaskRepository taskRepository;
 
+    public List<Task> getAllTasks() {
+        return taskRepository.findAll();
+    }
+
     public Task getTaskById(Integer id) {
         return taskRepository.findById(id).orElse(null);
     }
