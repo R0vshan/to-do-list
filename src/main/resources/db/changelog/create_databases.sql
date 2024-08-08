@@ -28,7 +28,6 @@ alter table public.user
 
 
 create table if not exists public.user_roles (
-     id      serial primary key ,
      user_id uuid not null
          constraint fk_user
              references public.user (id),
