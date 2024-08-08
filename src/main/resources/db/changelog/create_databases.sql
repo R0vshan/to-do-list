@@ -1,6 +1,16 @@
 CREATE TYPE task_status AS ENUM ('Not Done', 'In Progress', 'Done');
-CREATE TYPE user_role AS ENUM ('Root', 'Regular');
 
+create table if not exists public.roles (
+                                            id serial primary key ,
+                                            name varchar(50) not null unique
+);
+
+alter table public.roles
+    owner to postgres;
+
+insert into public.roles (name)
+values ('Root'), ('Regular')
+on conflict (name) do nothing ;
 
 create table if not exists public.user
 (
@@ -17,14 +27,15 @@ alter table public.user
     owner to postgres;
 
 
-create table if not exists public.user_roles
-(
-    id      serial primary key ,
-    user_id uuid not null
-            constraint fk_user
-            references public.user (id),
-    role    user_role not null ,
-    constraint unique_user_role unique (user_id, role)
+create table if not exists public.user_roles (
+     id      serial primary key ,
+     user_id uuid not null
+         constraint fk_user
+             references public.user (id),
+     role_id int not null
+         constraint fk_role
+             references public.roles (id),
+     constraint unique_user_role unique (user_id, role_id)
 );
 
 alter table public.user_roles
