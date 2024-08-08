@@ -12,7 +12,7 @@ insert into public.roles (name)
 values ('Root'), ('Regular')
 on conflict (name) do nothing ;
 
-create table if not exists public.user
+create table if not exists public.userEntity
 (
     id       uuid default gen_random_uuid() not null
         primary key,
@@ -23,14 +23,14 @@ create table if not exists public.user
         unique
 );
 
-alter table public.user
+alter table public.userEntity
     owner to postgres;
 
 
 create table if not exists public.user_roles (
      user_id uuid not null
          constraint fk_user
-             references public.user (id),
+             references public.userEntity (id),
      role_id int not null
          constraint fk_role
              references public.roles (id),
@@ -54,7 +54,7 @@ create table if not exists public.tasks
     end_date    date,
     user_id     uuid         not null
     constraint fk_user
-    references public.user
+    references public.userEntity
     );
 
 alter table public.tasks

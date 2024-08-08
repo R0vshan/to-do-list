@@ -9,13 +9,13 @@ import java.util.List;
 import java.util.UUID;
 
 @Entity
-@Table(name = "user")
+@Table(name = "userentity")
 @Data
 @NoArgsConstructor
 public class UserEntity {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private UUID id;
     private String username;
     private String password;
